@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://www.nationsonline.org/gallery/World/Human-development.jpg');
+            background-size:cover;
+            background-position: center;
+            background-repeat:no-repeat;
+            min-height:660px;
+        }
+        
+        .top-container {
+            width: 30%; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            margin-top:50px;
+            margin-left:500px;
+
+        }
+        
+        .top-buttons {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            color: white;
+            background-color: #007BFF;
+        }
+        
+        #title {
+            text-align: center;
+            font-size: 24px;
+            color: red;
+            margin-bottom: 20px;
+        }
+        .b1
+        {
+            padding: 10px 20px;
+            margin: 0 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .b2
+        {
+            padding: 10px 20px;
+            margin: 0 10px;
+            background-color: #43dd2c;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+         
+        #subtitle {
+            text-align: center;
+            font-size: 15px;
+            color: yellow;
+            margin-bottom: 20px;
+        }
+        
+        #additional-text {
+            text-align: center;
+            font-size: 25px;
+            color:greenyellow;
+        }
+    </style>
+    <script>
+        function goToHome() {
+          window.location.href ="{{url_for('home')}}";
+        }
+        function GoToPredict() {
+          window.location.href = "{{ url_for('indexnew') }}";
+        }
+    
+      </script>
+</head>
+<body>
+    <div class="top-buttons">
+        <button class="b1" onclick="goToHome()">Home</button>
+        <button class="b2" onclick="GoToPredict()">Predict</button>
+    </div>
+    <div class="top-container">
+        <div id="title">
+            Human Development Index   
+        </div>
+       <div id="subtitle">
+          A machine Learning application using Flask
+       </div>
+       <div id="additional-text">
+         {{ prediction_text }}
+       </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://bsmedia.business-standard.com/_media/bs/img/article/2018-11/13/full/1542130510-2448.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 90vh;
+        }
+        
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .form-group {
+            margin-bottom: 30px;
+        }
+    
+        
+        input[type="text"],
+        select {
+            width: 80%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            padding-left: 15px;
+        }
+        
+        button[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            width:80%;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .top-buttons {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 10px;
+        }
+        .h2
+        {
+            font-size: 36px;
+            font-weight: bold;
+            margin-top:120px;
+            margin-bottom: 10px;
+            text-align: center;
+            margin-left: 20px;
+            color:lightgoldenrodyellow;
+        }
+        .b1
+        {
+            padding: 10px 20px;
+            margin: 0 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .b2
+        {
+            padding: 10px 20px;
+            margin: 0 10px;
+            background-color: #43dd2c;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+    <script>
+        function goToHome() {
+          window.location.href ="{{url_for('home')}}";
+        }
+        function GoToPredict() {
+          window.location.href = "{{ url_for('indexnew') }}";
+        }
+        function validateForm() {
+            var country = document.getElementById("country").value;
+            var lifeExpectancy = parseFloat(document.getElementById("input1").value);
+            var schoolingYears = parseFloat(document.getElementById("input2").value);
+            var gniCapita = parseFloat(document.getElementById("input3").value);
+            var internetUsers = parseInt(document.getElementById("input4").value);
+
+            if (country === "" || isNaN(lifeExpectancy) || isNaN(schoolingYears) || isNaN(gniCapita) || isNaN(internetUsers)) {
+                alert("Please fill out all fields with valid numeric values.");
+                return false;
+            }
+        }
+    
+    </script>
+</head>
+<body>
+    <h2 class="h2">Human Development Index</h2>
+    <div class="container">
+        <div class="top-buttons">
+            <button class="b1" onclick="goToHome()">Home</button>
+            <button class="b2" onclick="GoToPredict()">Predict</button>
+        </div>
+        <div class="form-container">
+            <form action="{{url_for('resultnew')}}" method="post" onsubmit="return validateForm()">
+                <div class="form-group">
+                    <input type="text" id="country" name="country" list="countryList" placeholder="select the name of thecountry">
+                    <datalist id="countryList">
+                        <option value="Norway">
+                        <option value="Australia">
+                        <option value="Switzerland">
+                        <option value="Germany">
+                        <option value="Denmark">
+                        <option value="Singapore">
+                        <option value="Netherlands">
+                        <option value="Ireland">
+                        <option value="Iceland">
+                        <option value="Canada">
+                        <option value="United States">
+                        <option value="Hong Kong, China (SAR)">
+                        <option value="New Zealand">
+                        <option value="Sweden">
+                        <option value="Liechtenstein">
+                        <option value="United Kingdom">
+                        <option value="Japan">
+                        <option value="Korea (Republic of)">
+                        <option value="Israel">
+                        <option value="Luxembourg">
+                        <option value="France">
+                        <option value="Belgium">
+                        <option value="Finland">
+                        <option value="Austria">
+                        <option value="Slovenia">
+                        <option value="Italy">
+                        <option value="Spain">
+                        <option value="Czech Republic">
+                        <option value="Greece">
+                        <option value="Brunei Darussalam">
+                        <option value="Estonia">
+                        <option value="Andorra">
+                        <option value="Cyprus">
+                        <option value="Malta">
+                        <option value="Qatar">
+                        <option value="Poland">
+                        <option value="Lithuania">
+                        <option value="Chile">
+                        <option value="Saudi Arabia">
+                        <option value="Slovakia">
+                        <option value="Portugal">
+                        <option value="United Arab Emirates">
+                        <option value="Hungary">
+                        <option value="Latvia">
+                        <option value="Argentina">
+                        <option value="Croatia">
+                        <option value="Bahrain">
+                        <option value="Montenegro">
+                        <option value="Russian Federation">
+                        <option value="Romania">
+                        <option value="Kuwait">
+                        <option value="Belarus">
+                        <option value="Oman">
+                        <option value="Barbados">
+                        <option value="Uruguay">
+                        <option value="Bulgaria">
+                        <option value="Kazakhstan">
+                        <option value="Bahamas">
+                        <option value="Malaysia">
+                        <option value="Palau">
+                        <option value="Panama">
+                        <option value="Antigua and Barbuda">
+                        <option value="Seychelles">
+                        <option value="Mauritius">
+                        <option value="Trinidad and Tobago">
+                        <option value="Costa Rica">
+                        <option value="Serbia">
+                        <option value="Cuba">
+                        <option value="Iran (Islamic Republic of)">
+                        <option value="Georgia">
+                        <option value="Turkey">
+                        <option value="Venezuela (Bolivarian Republic of)">
+                        <option value="Sri Lanka">
+                        <option value="Saint Kitts and Nevis">
+                        <option value="Albania">
+                        <option value="Lebanon">
+                        <option value="Mexico">
+                        <option value="Azerbaijan">
+                        <option value="Brazil">
+                        <option value="Grenada">
+                        <option value="Bosnia and Herzegovina">
+                        <option value="The former Yugoslav Republic of Macedonia">
+                        <option value="Algeria">
+                        <option value="Armenia">
+                        <option value="Ukraine">
+                        <option value="Jordan">
+                        <option value="Peru">
+                        <option value="Thailand">
+                        <option value="Ecuador">
+                        <option value="China">
+                        <option value="Fiji">
+                        <option value="Mongolia">
+                        <option value="Saint Lucia">
+                        <option value="Jamaica">
+                        <option value="Colombia">
+                        <option value="Dominica">
+                        <option value="Suriname">
+                        <option value="Tunisia">
+                        <option value="Dominican Republic">
+                        <option value="Saint Vincent and the Grenadines">
+                        <option value="Tonga">
+                        <option value="Libya">
+                        <option value="Belize">
+                        <option value="Samoa">
+                        <option value="Maldives">
+                        <option value="Uzbekistan">
+                        <option value="Moldova (Republic of)">
+                        <option value="Botswana">
+                        <option value="Gabon">
+                        <option value="Paraguay">
+                        <option value="Egypt">
+                        <option value="Turkmenistan">
+                        <option value="Indonesia">
+                        <option value="Palestine, State of">
+                        <option value="Viet Nam">
+                        <option value="Philippines">
+                        <option value="El Salvador">
+                        <option value="Bolivia (Plurinational State of)">
+                        <option value="South Africa">
+                        <option value="Kyrgyzstan">
+                        <option value="Iraq">
+                        <option value="Cabo Verde">
+                        <option value="Morocco">
+                        <option value="Nicaragua">
+                        <option value="Guatemala">
+                        <option value="Namibia">
+                        <option value="Guyana">
+                        <option value="Micronesia (Federated States of)">
+                        <option value="Tajikistan">
+                        <option value="Honduras">
+                        <option value="India">
+                        <option value="Bhutan">
+                        <option value="Timor-Leste">
+                        <option value="Vanuatu">
+                        <option value="Congo">
+                        <option value="Equatorial Guinea">
+                        <option value="Kiribati">
+                        <option value="Lao People's Democratic Republic">
+                        <option value="Bangladesh">
+                        <option value="Ghana">
+                        <option value="Zambia">
+                        <option value="Sao Tome and Principe">
+                        <option value="Cambodia">
+                        <option value="Nepal">
+                        <option value="Myanmar">
+                        <option value="Kenya">
+                        <option value="Pakistan">
+                        <option value="Swaziland">
+                        <option value="Syrian Arab Republic">
+                        <option value="Angola">
+                        <option value="Tanzania (United Republic of)">
+                        <option value="Nigeria">
+                        <option value="Cameroon">
+                        <option value="Papua New Guinea">
+                        <option value="Zimbabwe">
+                        <option value="Solomon Islands">
+                        <option value="Mauritania">
+                        <option value="Madagascar">
+                        <option value="Rwanda">
+                        <option value="Comoros">
+                        <option value="Lesotho">
+                        <option value="Senegal">
+                        <option value="Haiti">
+                        <option value="Uganda">
+                        <option value="Sudan">
+                        <option value="Togo">
+                        <option value="Benin">
+                        <option value="Yemen">
+                        <option value="Afghanistan">
+                        <option value="Malawi">
+                        <option value="Côte d'Ivoire">
+                        <option value="Djibouti">                    
+                </div>
+                <div class="form-group">
+                    <input type="text" id="input1" name="life_expectancy" placeholder="        Enter life expectancy rate(range 50-89)">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="input2" name="mean_years_of_schooling" placeholder="        Enter Mean years od schoolings(range 1-15)">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="input3" name="gni_per_capita" placeholder="               Enter GNI(range 290-129000)">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="input4" name="internet_users" placeholder="         Enter the number of internet users">
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Human Development Index</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('https://www.nicepng.com/png/detail/39-392491_world-map-transparent-image-researching-developing-countries-a.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      height: 100vh;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .header {
+      display: flex;
+      justify-content: flex-end;
+      padding: 20px;
+    }
+
+    .top-buttons {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .left-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding-left: 20px;
+      color: black; 
+    }
+
+    .title {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-align: center;
+      margin-left: 500px;
+      margin-top:10px;
+    }
+
+    .h3
+    {
+      padding-right:50px;
+      padding-left: 100px;
+      margin-top: 60px;
+    }
+    .b1
+    {
+      padding: 10px 20px;
+      margin: 0 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .b2
+    {
+      padding: 10px 20px;
+      margin: 0 10px;
+      background-color: #43dd2c;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+  </style>
+  <script>
+    function goToHome() {
+      window.location.href ="{{url_for('home')}}";
+    }
+    function GoToPredict() {
+      window.location.href = "{{url_for('indexnew') }}";
+    }
+
+  </script>
+</head>
+
+<body>
+  <div class="top-buttons">
+    <button class="b1" onclick="goToHome()">Home</button>
+    <button class="b2" onclick="GoToPredict()">Predict</button>
+</div>
+  <div class="left-container">
+    <div class="title">Human Development Index</div>
+        <h3 class="h3">The Human Development Index (HDI) is a statistic composite index of life expectancy, education, and per capita income indicators, which are used to rank countries into four tiers (very high, high, medium & low) of human development. A country scores a higher IIDI when the lifespan is higher, the education level is higher, and the gross national income GNI (PPP) per capita is higher. The HDI was created to emphasize that people and their capabilities should be the ultimate criteria for assessing the development of a country, not economic growth alone. The HDI can also be used to question national policy choices, asking how two countries with the same level of GNI per capita can end up with different human evelopment outcomes. These contrasts can stimulate debate about government policy priorities. In order to do this we will be building a machine learning model to predict the Human Development Index of a country by taking few important aspects as inputs. Our model will at last predict the HDI score of a country and will also tell under which category will it be falling (very high, high, medium or low)
+        </h3>
+    </div>
+</body>
+
+</html>
